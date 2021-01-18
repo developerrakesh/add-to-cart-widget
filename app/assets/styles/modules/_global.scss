@@ -1,3 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    background-color: #ccc;
+    background-color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    color: $primaryColor;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+h1 {
+    font-size: 2rem;
+
+    @include smallScreen {
+        font-size: 1.5rem;
+    }
+}
+
+h2 {
+    font-size: 1.1rem;
+}
+
+p {
+    margin: 0;
+}
+
+button {
+    border: none;
 }

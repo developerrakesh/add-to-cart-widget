@@ -1,5 +1,11 @@
 @import 'normalize.css';
-@import 'base/fonts';
 @import 'base/mixins';
 @import 'base/variables';
 @import 'modules/global';
+@import 'modules/site-header';
+@import 'modules/container';
+@import 'modules/main';
+@import 'modules/item';
+@import 'modules/aside';
+@import 'modules/cart';
+@import 'modules/total';

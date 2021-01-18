@@ -1,0 +1,31 @@
+.site-header {
+    border-top: 1px solid $primaryColor;
+    border-bottom: 1px solid $primaryColor;
+    padding: 10px 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    position: relative;
+
+    @include smallScreen {
+        padding: 10px;
+    }
+
+    .msg {
+        position: absolute;
+        background-color: $msgColor;
+        color: #fff;
+        padding: 5px 15px 7px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 3px;
+
+        @include smallScreen {
+            font-size: .85rem;
+            padding: 5px 5px 7px;
+            transform: translateY(-50%);
+            right: 13px;
+            left: auto;
+        }
+    }
+}

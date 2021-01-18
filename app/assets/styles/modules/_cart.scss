@@ -1,0 +1,114 @@
+.cart {
+    margin-bottom: 25px;
+    border-bottom: 1px solid $primaryColor;
+    padding-bottom: 10px;
+
+    > div {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .column {
+        flex-basis: 15%;
+
+        &:nth-child(1) {
+            flex-basis: 30%;
+        }
+
+        &:nth-of-type(2) {
+            flex-basis: 7%;
+        }
+    }
+
+    .column2 {
+        margin-left: -18px;
+    }
+
+    .heading {
+        border-top: 1px solid $primaryColor;
+        border-bottom: 1px solid $primaryColor;
+        padding: 6px 3px;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: .9rem;
+        font-weight: normal;
+    }
+
+    .cart-item {
+        margin-bottom: 5px;
+        padding: 0 3px;
+
+        p {
+            line-height: 35px;
+        }
+    }
+
+    .column1 {
+        display: flex;
+        border: .5px solid $primaryColor;
+        min-width: 137px;
+        position: relative;
+        padding-right: 10px;
+
+        @include smallScreen {
+            min-width: 115px;
+        }
+
+        svg {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+
+            &:active {
+                transform: translateY(-50%) scale(1.1);
+            }
+        }
+    }
+
+    img {
+        width: 28px;
+        height: 28px;
+        margin: 3px 5px 2px 3px;
+    }
+
+    .column2 {
+        position: relative;
+
+        svg {
+            position: absolute;
+            width: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+
+            &:active {
+                transform: translateY(-50%) scale(1.1);
+            }
+
+            &.fa-plus {
+                left: -22px;
+
+                @include smallScreen {
+                    left: -17px;
+                }
+            }
+
+            &.fa-minus {
+                right: -22px;
+
+                @include smallScreen {
+                    right: -17px;
+                }
+            }
+        }
+    }
+
+    .qty {
+        border: .5px solid $primaryColor;
+        padding: 0 11px;
+    }
+}

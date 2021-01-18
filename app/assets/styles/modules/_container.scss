@@ -1,0 +1,8 @@
+.container {
+    display: flex;
+    padding: 0 25px;
+
+    @include mediumScreen {
+        display: block;
+    }
+}
