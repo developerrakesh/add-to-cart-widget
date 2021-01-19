@@ -1,3 +1,4 @@
+//add/update/delete items in the cart section
 class Cart {
     constructor() {
         this.cart = document.querySelector('.cart');
@@ -15,6 +16,18 @@ class Cart {
             <p class="msg">${item} is added to cart</p>
         `);
         setTimeout(() => this.removeMsg(), 1500);
+    }
+
+    customEvent(item, qty, price, dis) {
+        const event = new CustomEvent('itemAdded', {
+            detail: {
+                product: item,
+                quantity: qty,
+                price: price,
+                discount: dis
+            }
+        });
+        this.cart.dispatchEvent(event);
     }
 
     removeCart(evt) {
@@ -46,6 +59,7 @@ class Cart {
         let imgSrc = evt.target.dataset.img;
         let price = evt.target.dataset.price;
         let discount = evt.target.dataset.discount;
+        let quantitiy = 1;
         console.log(discount);
         let checkCartItem = this.cart.querySelector(`[data-name="${item}"]`);
         if(!checkCartItem) {
@@ -64,6 +78,7 @@ class Cart {
                 </div>
             `);
             this.showMsg(item);
+            this.customEvent(item, quantitiy, price, discount);
             this.closeBtns = this.cart.querySelectorAll('.close');
             this.plusBtns = this.cart.querySelectorAll('.plus');
             this.minusBtns = this.cart.querySelectorAll('.minus');
