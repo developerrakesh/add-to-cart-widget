@@ -1,4 +1,4 @@
-/** Project Highlights **/
+** Project Highlights **
 1. HTML5 used
 2. OOP javascript used
 3. Module Design Pattern is used
