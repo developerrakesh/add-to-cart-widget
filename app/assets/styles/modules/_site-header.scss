@@ -22,10 +22,9 @@
 
         @include smallScreen {
             font-size: .85rem;
-            padding: 5px 5px 7px;
-            transform: translateY(-50%);
-            right: 13px;
-            left: auto;
+            position: static;
+            transform: none;
+            display: inline-block;
         }
     }
 }

@@ -1,5 +1,9 @@
 .aside {
-    flex: 2;
+    flex: 2.7;
+
+    @include largeScreen {
+        flex: 2;
+    }
 
     p {
         font-size: .9rem;

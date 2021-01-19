@@ -9,14 +9,24 @@
     }
 
     .column {
-        flex-basis: 15%;
+        flex-basis: 13%;
 
         &:nth-child(1) {
-            flex-basis: 30%;
+            flex-basis: 50%;
         }
 
         &:nth-of-type(2) {
             flex-basis: 7%;
+        }
+
+        @include smallScreen {
+            flex-basis: 12%;
+            font-size: .8rem;
+
+            &:nth-of-type(2) {
+                margin-left: -13px;
+                flex-basis: 4%;
+            }
         }
     }
 
@@ -56,15 +66,29 @@
             min-width: 115px;
         }
 
-        svg {
+        p {
+            font-size: .85rem;
+
+            @include smallScreen {
+                font-size: .8rem;
+                margin-left: 3px;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        }
+
+        .close {
             position: absolute;
+            font-size: 1.05rem;
             right: 10px;
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
+            font-weight: bold;
+            margin-top: -1px;
 
-            &:active {
-                transform: translateY(-50%) scale(1.1);
+            &:active, &:focus {
+                transform: translateY(-50%) scale(1.2);
             }
         }
     }
@@ -73,31 +97,37 @@
         width: 28px;
         height: 28px;
         margin: 3px 5px 2px 3px;
+
+        @include smallScreen {
+            display: none;
+        }
     }
 
     .column2 {
         position: relative;
 
-        svg {
+        .controlBtn {
             position: absolute;
-            width: 12px;
+            font-size: 1.2rem;
+            padding: 2px;
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
 
-            &:active {
-                transform: translateY(-50%) scale(1.1);
+            &:active, &:focus {
+                transform: translateY(-50%) scale(1.2);
             }
 
-            &.fa-plus {
-                left: -22px;
+            &.minus {
+                left: -20px;
+                margin-top: -1px;
 
                 @include smallScreen {
-                    left: -17px;
+                    left: -16px;
                 }
             }
 
-            &.fa-minus {
+            &.plus {
                 right: -22px;
 
                 @include smallScreen {

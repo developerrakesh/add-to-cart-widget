@@ -12,8 +12,8 @@ class DisplayItems {
                 <p class="disPer">${item.discount}% off</p>
                 <div>
                     <p class="name">${item.name}</p>
-                    <p><span class="origPrice">$${item.price.actual}</span> <span class="disPrice">$${item.price.display}</span></p>
-                    <button class="addToCart">Add to cart</button>
+                    <p><span class="origPrice">$${item.price.display}</span> <span class="disPrice">$${item.price.actual}</span></p>
+                    <button class="addToCart" data-name="${item.name}" data-img="${item.image}" data-price="${item.price.actual}" data-discount="${item.discount}">Add to cart</button>
                 </div>
             </div>
         `);
