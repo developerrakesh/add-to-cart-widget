@@ -144,7 +144,7 @@ class Cart {
 
     afterLoad() {
         const timer = setInterval(() => {
-            if(this.main.querySelector('.item')) {
+            if(this.main.querySelector('.last')) {
                 clearInterval(timer);
                 this.event();
             } 

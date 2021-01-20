@@ -5,9 +5,13 @@ class DisplayItems {
         this.getData();  
     }
 
-    populateDisplay(item) {
+    populateDisplay(item, index, length) {
+        let last = 'not-last';
+        if(index == length-1) {
+            last = 'last';
+        }
         this.main.insertAdjacentHTML('beforeend', `
-            <div class="item">
+            <div class="item ${last}">
                 <img src="${item.image}" alt="${item.name}">
                 <p class="disPer">${item.discount}% off</p>
                 <div>
@@ -21,8 +25,9 @@ class DisplayItems {
 
     parseData(data) {
         let itemsArr = data.items;
-        itemsArr.forEach(item => {
-            this.populateDisplay(item);
+        let length = itemsArr.length;
+        itemsArr.forEach((item, index) => {
+            this.populateDisplay(item, index, length);
         });
     }
     getData() {
