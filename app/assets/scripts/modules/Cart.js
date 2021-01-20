@@ -1,9 +1,10 @@
 //add/update/delete items in the cart section
 class Cart {
     constructor() {
+        this.main = document.querySelector('.main');
         this.cart = document.querySelector('.cart');
         this.header = document.querySelector('.site-header');
-        setTimeout(() => this.event(), 200);
+        this.afterLoad();
         this.removeCart = this.removeCart.bind(this);
         this.increaseQty = this.increaseQty.bind(this);
         this.decreaseQty = this.decreaseQty.bind(this);
@@ -18,7 +19,7 @@ class Cart {
         this.header.insertAdjacentHTML('beforeend', `
             <p class="msg">${item} is added to cart</p>
         `);
-        setTimeout(() => this.removeMsg(), 1500);
+        setTimeout(() => this.removeMsg(), 1200);
     }
 
     removeEvent(qty, price, discount) {
@@ -139,6 +140,15 @@ class Cart {
         this.cartBtns.forEach(btn => {
             btn.addEventListener('click', evt => this.addToCart(evt));
         }); 
+    }
+
+    afterLoad() {
+        const timer = setInterval(() => {
+            if(this.main.querySelector('.item')) {
+                clearInterval(timer);
+                this.event();
+            } 
+        }, 50);
     }
 }
 
