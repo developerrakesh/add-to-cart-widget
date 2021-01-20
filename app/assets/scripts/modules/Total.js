@@ -16,10 +16,10 @@ class Total extends Cart {
         this.grandTotal = 0;
     }
 
-    addTotalItems(item, qty, price, dis) {
-        this.totalItems += qty;
-        this.totalPrice += parseInt(price);
-        this.totalDiscount += ((parseInt(dis) * parseInt(price))/100);
+    addTotalItems(detail) {
+        this.totalItems += detail.quantity;
+        this.totalPrice += parseInt(detail.price);
+        this.totalDiscount += ((parseInt(detail.discount) * parseInt(detail.price))/100);
         this.grandTotal = this.totalPrice - this.totalDiscount;
         this.totalItemsTag.textContent = this.totalItems;
         this.totalPriceTag.textContent = this.totalPrice;
@@ -34,7 +34,7 @@ class Total extends Cart {
     }
 
     addEvent(evt) {
-        this.addTotalItems(evt.detail.product, evt.detail.quantity, evt.detail.price, evt.detail.discount);
+        this.addTotalItems(evt.detail);
     }
 
     event() {

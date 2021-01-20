@@ -31,27 +31,25 @@ class Cart {
     }
 
     removeCart(evt) {
-        let itemCart = evt.target.closest('.cart-item');
+        let itemCart = evt.target.parentElement.parentElement.parentElement;
         itemCart.remove();
     }
 
     increaseQty(evt) {
-        let itemCart = evt.target.closest('.cart-item');
-        let qty = parseInt(itemCart.querySelector('.qty').textContent);
-        let price = parseInt(itemCart.querySelector('.price').textContent);
+        let qtyBox = evt.target.previousElementSibling;
+        let qty = parseInt(qtyBox.textContent);
         qty++;
-        itemCart.querySelector('.qty').textContent = qty;
+        qtyBox.textContent = qty;
     }
 
     decreaseQty(evt) {
-        let itemCart = evt.target.closest('.cart-item');
-        let qty = parseInt(itemCart.querySelector('.qty').textContent);
-        let price = parseInt(itemCart.querySelector('.price').textContent);
+        let qtyBox = evt.target.nextElementSibling;
+        let qty = parseInt(qtyBox.textContent);
         qty--;
         if(qty === 0) {
-            itemCart.remove();
+            qtyBox.parentElement.parentElement.remove();
         } else {
-            itemCart.querySelector('.qty').textContent = qty;
+            qtyBox.textContent = qty;
         }
     }
     addToCart(evt) {
@@ -71,25 +69,32 @@ class Cart {
                     </div>
                     <div class="column column2">
                         <span class="controlBtn minus">-</span>
-                        <p class="qty">1</p>
-                        <span class="controlBtn plus">+</span>
+                        <p class="qty">${quantitiy}</p>
+                        <span class="controlBtn plus" data-n="${item}">+</span>
                     </div>
                     <p class="column">$<span class="price">${price}</span></p>
                 </div>
             `);
+            this.closeBtns = this.cart.querySelectorAll('.close');
+            this.minusBtns = this.cart.querySelectorAll('.minus');
+            this.plusBtns = this.cart.querySelectorAll('.plus');
+            this.plusBtns.forEach(btn => {
+                btn.removeEventListener('click', this.increaseQty);
+            });
+            this.minusBtns.forEach(btn => {
+                btn.addEventListener('click', this.decreaseQty);
+            });
             this.showMsg(item);
             this.customEvent(item, quantitiy, price, discount);
-            this.closeBtns = this.cart.querySelectorAll('.close');
-            this.plusBtns = this.cart.querySelectorAll('.plus');
-            this.minusBtns = this.cart.querySelectorAll('.minus');
             this.closeBtns.forEach(btn => {
                 btn.addEventListener('click', evt => this.removeCart(evt));
             });
             this.plusBtns.forEach(btn => {
-                btn.addEventListener('click', evt => this.increaseQty(evt));
+                console.log('event listener');
+                btn.addEventListener('click', this.increaseQty);
             });
             this.minusBtns.forEach(btn => {
-                btn.addEventListener('click', evt => this.decreaseQty(evt));
+                btn.addEventListener('click', this.decreaseQty);
             });
         }
     }
